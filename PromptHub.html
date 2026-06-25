@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PromptHub</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#111;
+color:white;
+margin:0;
+padding:20px;
+}
+
+h1{
+text-align:center;
+}
+
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+margin-bottom:20px;
+}
+
+.prompt-card{
+background:#222;
+padding:15px;
+margin-bottom:15px;
+border-radius:10px;
+}
+
+.category{
+color:#00d4ff;
+font-weight:bold;
+}
+
+button{
+background:#00d4ff;
+border:none;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🚀 PromptHub</h1>
+
+<input type="text" id="search" placeholder="Search prompts..." onkeyup="searchPrompt()">
+
+<div id="prompts">
+
+<div class="prompt-card">
+<div class="category">Student</div>
+<p class="prompt">
+Explain this topic in simple Grade 11 language with examples.
+</p>
+<button onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-card">
+<div class="category">Programming</div>
+<p class="prompt">
+Act as a senior software engineer and explain this code step by step.
+</p>
+<button onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-card">
+<div class="category">Business</div>
+<p class="prompt">
+Create a business plan for a startup with low budget.
+</p>
+<button onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-card">
+<div class="category">Design</div>
+<p class="prompt">
+Create a modern logo concept for my brand.
+</p>
+<button onclick="copyPrompt(this)">Copy</button>
+</div>
+
+</div>
+
+<script>
+function copyPrompt(btn){
+let text=btn.parentElement.querySelector(".prompt").innerText;
+navigator.clipboard.writeText(text);
+btn.innerText="Copied!";
+setTimeout(()=>{
+btn.innerText="Copy";
+},1500);
+}
+
+function searchPrompt(){
+let input=document.getElementById("search").value.toLowerCase();
+let cards=document.querySelectorAll(".prompt-card");
+
+cards.forEach(card=>{
+let text=card.innerText.toLowerCase();
+
+if(text.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+</script>
+
+</body>
+</html>
