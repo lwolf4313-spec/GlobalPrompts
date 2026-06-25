@@ -3,119 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PromptHub</title>
+<title>GlobalPromptsB AI</title>
 
 <style>
 body{
 font-family:Arial,sans-serif;
 background:#111;
 color:white;
-margin:0;
+text-align:center;
 padding:20px;
 }
-
-h1{
-text-align:center;
+.logo{
+width:180px;
+border-radius:15px;
 }
-
-input{
-width:100%;
-padding:12px;
+textarea{
+width:90%;
+height:120px;
+padding:10px;
+margin:10px;
+}
+button{
+padding:12px 20px;
+background:#00b894;
+color:white;
 border:none;
 border-radius:8px;
-margin-bottom:20px;
 }
-
-.prompt-card{
-background:#222;
+#answer{
+margin-top:20px;
 padding:15px;
-margin-bottom:15px;
+background:#222;
 border-radius:10px;
-}
-
-.category{
-color:#00d4ff;
-font-weight:bold;
-}
-
-button{
-background:#00d4ff;
-border:none;
-padding:10px;
-border-radius:6px;
-cursor:pointer;
-margin-top:10px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>🚀 PromptHub</h1>
+<img src="logo.png" class="logo">
+<h1>GlobalPromptsB AI</h1>
 
-<input type="text" id="search" placeholder="Search prompts..." onkeyup="searchPrompt()">
+<textarea id="prompt" placeholder="Type your prompt here"></textarea>
+<br>
+<button onclick="askAI()">Ask AI</button>
 
-<div id="prompts">
-
-<div class="prompt-card">
-<div class="category">Student</div>
-<p class="prompt">
-Explain this topic in simple Grade 11 language with examples.
-</p>
-<button onclick="copyPrompt(this)">Copy</button>
-</div>
-
-<div class="prompt-card">
-<div class="category">Programming</div>
-<p class="prompt">
-Act as a senior software engineer and explain this code step by step.
-</p>
-<button onclick="copyPrompt(this)">Copy</button>
-</div>
-
-<div class="prompt-card">
-<div class="category">Business</div>
-<p class="prompt">
-Create a business plan for a startup with low budget.
-</p>
-<button onclick="copyPrompt(this)">Copy</button>
-</div>
-
-<div class="prompt-card">
-<div class="category">Design</div>
-<p class="prompt">
-Create a modern logo concept for my brand.
-</p>
-<button onclick="copyPrompt(this)">Copy</button>
-</div>
-
-</div>
+<div id="answer">AI answer will appear here...</div>
 
 <script>
-function copyPrompt(btn){
-let text=btn.parentElement.querySelector(".prompt").innerText;
-navigator.clipboard.writeText(text);
-btn.innerText="Copied!";
-setTimeout(()=>{
-btn.innerText="Copy";
-},1500);
-}
+async function askAI(){
 
-function searchPrompt(){
-let input=document.getElementById("search").value.toLowerCase();
-let cards=document.querySelectorAll(".prompt-card");
+let prompt=document.getElementById("prompt").value;
 
-cards.forEach(card=>{
-let text=card.innerText.toLowerCase();
+let res=await fetch("YOUR_BACKEND_URL",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+  <body>
 
-if(text.includes(input)){
-card.style.display="block";
-}else{
-card.style.display="none";
-}
+<img src="logo.png" class="logo">
+<h1>GlobalPromptsB AI</h1>
+
+<textarea id="prompt" placeholder="Type your prompt here"></textarea>
+<br>
+<button onclick="askAI()">Ask AI</button>
+
+<div id="answer">AI answer will appear here...</div>
+
+<script>
+async function askAI(){
+
+let prompt=document.getElementById("prompt").value;
+
+let res=await fetch("YOUR_BACKEND_URL",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({prompt})
 });
+
+let data=await res.json();
+
+document.getElementById("answer").innerText=data.answer;
 }
 </script>
 
 </body>
 </html>
+<title>GlobalPromptsB - AI Prompt Generator</title>
+
+<meta name="description" content="GlobalPromptsB is an AI prompt generator website powered by AI.">
+
+<meta name="keywords" content="GlobalPromptsB, AI Prompts, Prompt Generator, ChatGPT Prompts">
+
+<meta name="robots" content="index, follow">
+},
+body
